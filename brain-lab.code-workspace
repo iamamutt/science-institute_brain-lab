@@ -52,7 +52,8 @@
 			"loaders",
 			"package",
 			"module",
-			"docker"
+			"docker",
+			"vscode"
 		],
 		"djcookiecutter.condaExec": "mamba",
 		"djcookiecutter.localPath": "${env:HOME}/Documents/datajoint/dj-cookiecutter",
@@ -432,6 +433,14 @@
 					"'!src/brain_lab/__main__.py'",
 					"-i",
 					"'!src/brain_lab/populate/entrypoint.py'",
+					"-i",
+					"'!src/brain_lab/pipeline/.gitignore'",
+					"-i",
+					"'!src/brain_lab/support/.gitignore'",
+					"-i",
+					"'!src/brain_lab/tables/.gitignore'",
+					"-i",
+					"'!src/brain_lab/utils/.gitignore'",
 					"${workspaceFolder}"
 				],
 				"options": {
