@@ -1,10 +1,14 @@
-# Run workflows that require semantic versioning info
-name: main-cicd
+# Run workflows that require semantic versioning info, updates to python package files, and builds.
+name: package-updates
+
 on:
   workflow_run:
-    workflows: [run-tests]
-    types: [completed]
-    branches: [main]
+    workflows:
+      - run-tests
+    types:
+      - completed
+    branches:
+      - main
 
 jobs:
   call_semantic_versioning:
