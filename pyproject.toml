@@ -1,0 +1,118 @@
+[build-system]
+requires = ["setuptools>=62.0", "wheel>=0.37"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brain-lab"
+description = "A Science Institute Workflow for Brain Lab"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "DataJoint", email = "info@datajoint.com" },
+    { name = "Joseph Burling", email = "joseph@datajoint.com" },
+]
+keywords = ["datajoint"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["version"]
+dependencies = [
+    "cryptography", # datajoint
+    "ipython",      # datajoint
+    "matplotlib",   # datajoint
+    "minio",        # datajoint
+    "networkx",     # datajoint
+    "numpy",        # datajoint
+    "otumat",       # datajoint
+    "pandas",       # datajoint
+    "pydot",        # datajoint
+    "pymysql",      # datajoint
+    "pyparsing",    # datajoint
+    "tqdm",         # datajoint
+    "urllib3",      # datajoint
+    "appdirs",      # djsciops-axon
+    "boto3",        # djsciops-axon
+    "flask",        # djsciops-axon
+    "click",        # brain_lab
+    "h5py",         # brain_lab
+    "plotly",       # brain_lab
+    "pyyaml",       # brain_lab
+    "scipy",        # brain_lab
+    "seaborn",      # brain_lab
+    "tomli",        # brain_lab
+]
+
+[project.optional-dependencies]
+dev = ["black", "isort", "flake8", "pre-commit", "nox", "mypy"]
+doc = [
+    "mkdocs",
+    "mkdocstrings-python",
+    "mkdocs-material",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+    "mkdocs-include-markdown-plugin",
+    "pymdown-extensions",
+    "mike",
+]
+test = ["pytest"]
+sciops = ["ipykernel", "djsciops", "datajoint>=0.13.4"]
+
+[project.scripts]
+brain_lab_entrypoint = "brain_lab.populate.entrypoint:cli"
+brain_lab = "brain_lab.__main__:cli"
+
+[project.urls]
+Homepage = "https://github.com/iamamutt"
+Source = "https://github.com/iamamutt/science-institute_brain-lab"
+Documentation = "https://iamamutt.github.io/science-institute_brain-lab"
+DataJoint = "https://docs.datajoint.org/"
+
+[tool.setuptools.dynamic]
+version = { attr = "brain_lab.__version__" }
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+color = false
+exclude = '''
+/(
+    \.git
+    | \.mypy_cache
+    | \.nox
+    | \.venv
+    | _build
+    | build
+    | dist
+    | env
+    | venv
+)/
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.pyright]
+include = ["src"]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".nox",
+    "**/.ipynb_checkpoints",
+    "**/__pycache__",
+    "src/experimental",
+]
+stubPath = "typings"
+reportMissingImports = true
+reportMissingTypeStubs = false
