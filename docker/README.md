@@ -1,5 +1,10 @@
 # Docker Containers
 
+TODO: docker things
+- test image builds for resuable workflows
+- labhub multi conda envs 
+- actions checkout 
+
 Create a `.env` file and the change any variables as necessary, then source those variables for later use.
 
 ```bash
@@ -58,7 +63,7 @@ docker-compose -f docker-compose-codebook_env.yaml up --detach --force-recreate 
 
 ## Standard Worker Environment
 
-... 
+TODO: add description 
 
 
 ### Docker Compose
