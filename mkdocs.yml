@@ -1,4 +1,4 @@
-site_name: "Science Institute: _Brain Lab_"
+site_name: "Science Institute: Brain Lab"
 site_description: "A Brain Lab for Science Institute"
 site_author: "Joseph Burling"
 repo_url: "https://github.com/iamamutt/science-institute_brain-lab"
@@ -92,6 +92,11 @@ plugins:
       default_handler: python
       handlers:
         python:
+          paths:
+            - src
+          setup_commands:
+            - "import sys"
+            - "sys.path.append('src')"
           rendering:
             docstring_section_style: spacy
             line_length: 88
