@@ -387,9 +387,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#datajoint-axon-data-upload" class="md-nav__link">
-    DataJoint Axon (Data Upload)
+  <a href="#datajoint-axon-data-uploaddownload" class="md-nav__link">
+    DataJoint Axon (Data Upload/Download)
   </a>
+  
+    <nav class="md-nav" aria-label="DataJoint Axon (Data Upload/Download)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#axon-gui" class="md-nav__link">
+    Axon GUI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#axon-cli" class="md-nav__link">
+    Axon CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    Misc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -765,9 +792,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#datajoint-axon-data-upload" class="md-nav__link">
-    DataJoint Axon (Data Upload)
+  <a href="#datajoint-axon-data-uploaddownload" class="md-nav__link">
+    DataJoint Axon (Data Upload/Download)
   </a>
+  
+    <nav class="md-nav" aria-label="DataJoint Axon (Data Upload/Download)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#axon-gui" class="md-nav__link">
+    Axon GUI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#axon-cli" class="md-nav__link">
+    Axon CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    Misc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -928,8 +982,52 @@
 <p><img alt="labbook session directory" src="assets/setup/labbook_sessiondirectory.png" /></p>
 <h3 id="datajoint-sciviz">DataJoint SciViz</h3>
 <p>&hellip;</p>
-<h3 id="datajoint-axon-data-upload">DataJoint Axon (Data Upload)</h3>
-<p>&hellip;</p>
+<h3 id="datajoint-axon-data-uploaddownload">DataJoint Axon (Data Upload/Download)</h3>
+<h4 id="axon-gui">Axon GUI</h4>
+<ol>
+<li>In the Axon app, on the lower left side, click the &lsquo;gear&rsquo; icon (Config). Enter the following information in each field (See the <code>Misc</code> section below for what the generated <code>json</code> config file will look like once configured):</li>
+</ol>
+<ul>
+<li>
+<p>AWS Account ID: <code>123456789012</code></p>
+</li>
+<li>
+<p>DataJoint Account Client ID: <code>xxxxxxxxxxxxxxxxxxxxxx</code></p>
+</li>
+<li>
+<p>S3 Role: <code>science-institute_brain-lab_researcher_prod</code></p>
+</li>
+<li>
+<p>S3 Bucket: <code>dj-sciops</code></p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>At the top right of the Axon app, click the &lsquo;circle arrow&rsquo; icon (Token). This will open a browser to be able to sign in with your DataJoint account and generate a temporary token.</p>
+</li>
+<li>
+<p>Select the &lsquo;S3 Bucket&rsquo; tab on the left side of the Axon app. Enter the following information to view the current list of files uploaded, the press &lsquo;Load&rsquo;:</p>
+</li>
+</ol>
+<ul>
+<li>S3 Bucket Directory: <code>science-institute_brain-lab/inbox/</code></li>
+</ul>
+<ol start="4">
+<li>To upload a folder to a subfolder within the &lsquo;S3 Bucket Directory&rsquo;, for example to upload the subject data folder &lsquo;SUBJ100&rsquo; from your local machine, enter the following path on S3: <code>science-institute_brain-lab/inbox/SUBJ100</code></li>
+</ol>
+<h4 id="axon-cli">Axon CLI</h4>
+<h4 id="misc">Misc</h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;aws&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;account_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123456789012&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;s3&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;science-institute_brain-lab_researcher_prod&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;bucket&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dj-sciops&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;djauth&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxx&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 <h3 id="datajoint-codebook-jupyterhub">DataJoint CodeBook (JupyterHub)</h3>
 <p>&hellip;</p>
 <p>Thank you for using the Science Institute: <em>Brain Lab</em> cloud-based platform.</p>
